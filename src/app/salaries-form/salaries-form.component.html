@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Salaries calculator</h1>
+  <form #f="ngForm" (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="dayGrossSalary">Day gross salary</label>
+      <input type="text"
+             class="form-control"
+             id="dayGrossSalary"
+             name="dayGrossSalary"
+             [(ngModel)]="model.dayGrossSalary"
+             required>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <ul>
+    <li *ngFor="let salaryItem of salaryList.salaryItemsList">
+      {{ salaryItem.country }} {{ salaryItem.salary }}
+    </li>
+  </ul>
+
+</div>

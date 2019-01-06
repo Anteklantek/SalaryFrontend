@@ -10,9 +10,8 @@ export class SalariesFormComponent implements OnInit {
   model : DayGrossSalaryViewModel = {
     dayGrossSalary: ''
   };
-  salaryList : SalaryList = {
-    salaryItemsList : [{country: "test",salary: "test"}]
-  };
+  salaryList : SalaryList;
+  currentDate : Date;
 
   constructor(private salaryService: SalaryService) {
 
@@ -20,13 +19,11 @@ export class SalariesFormComponent implements OnInit {
 
   onSubmit() {
     this.salaryService.getSalaryList(this.model.dayGrossSalary)
-      .subscribe((value : SalaryList) => this.salaryList = value)
+      .subscribe((value : SalaryList) => this.salaryList = value);
   }
 
   ngOnInit(): void {
-    this.salaryList = {
-      salaryItemsList : [{country: "test",salary: "test"}]
-    };
+    this.currentDate = new Date();
   }
 
 

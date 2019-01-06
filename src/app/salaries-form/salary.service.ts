@@ -17,6 +17,7 @@ export class SalaryService {
 export interface SalaryListItem {
   country: string;
   salary: string;
+  rateEffectiveDate: string;
 }
 
 export interface SalaryList {

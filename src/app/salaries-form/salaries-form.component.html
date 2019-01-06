@@ -12,10 +12,15 @@
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
-  <ul>
+  <ul class="mt-3">
     <li *ngFor="let salaryItem of salaryList.salaryItemsList">
-      {{ salaryItem.country }} {{ salaryItem.salary }}
+      <p>{{ salaryItem.country }}</p>
+      <p>Salary: {{ salaryItem.salary }} </p>
+      <div class="alert alert-primary" role="alert"
+           *ngIf="!(salaryItem.rateEffectiveDate == currentDate.toISOString().slice(0,10))">
+        Watch out: exchange rate
+        from {{ salaryItem.rateEffectiveDate }}
+      </div>
     </li>
   </ul>
-
 </div>

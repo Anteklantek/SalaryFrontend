@@ -1,16 +1,23 @@
 <div class="container">
   <h1>Salaries calculator</h1>
-  <form #f="ngForm" (submit)="onSubmit()">
+  <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" [numberMatch]="'dayGrossSalary'" novalidate>
     <div class="form-group">
       <label for="dayGrossSalary">Day gross salary:</label>
       <input type="text"
-             class="form-control"
              id="dayGrossSalary"
+             class="form-control"
              name="dayGrossSalary"
+             #dayGrossSalary="ngModel"
              [(ngModel)]="model.dayGrossSalary"
+             [ngClass]="{ 'is-invalid': f.submitted && dayGrossSalary.invalid}"
              required>
+      <div *ngIf="f.submitted && dayGrossSalary.invalid" class="invalid-feedback">
+        Must be a positive number with maximum 2 decimal places.
+      </div>
     </div>
-    <button type="submit" class="btn btn-success">Calculate</button>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Calculate</button>
+    </div>
   </form>
   <ul class="mt-3">
     <li *ngFor="let salaryItem of salaryList.salaryItemsList">

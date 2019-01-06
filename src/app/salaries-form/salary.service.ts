@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Injectable({
@@ -9,7 +9,7 @@ export class SalaryService {
 
   getSalaryList(dayGrossSalary : string){
     let url = "http://localhost:8090/salary";
-    let params = new HttpParams().set('dayGrossSalary', dayGrossSalary);
+    let params = new HttpParams().set('dayGrossSalary', dayGrossSalary.replace(',','.'));
     return this.http.get<SalaryList>(url, {params: params})
   }
 }

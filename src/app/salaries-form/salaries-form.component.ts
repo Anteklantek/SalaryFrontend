@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SalaryService, SalaryList} from "./salary.service";
+import {SalaryList, SalaryService} from "./salary.service";
 
 @Component({
   selector: 'app-salaries-form',
@@ -8,7 +8,8 @@ import {SalaryService, SalaryList} from "./salary.service";
 })
 export class SalariesFormComponent implements OnInit {
   model : DayGrossSalaryViewModel = {
-    dayGrossSalary: ''
+    dayGrossSalary: '',
+    invalid: true
   };
   salaryList : SalaryList;
   currentDate : Date;
@@ -31,4 +32,5 @@ export class SalariesFormComponent implements OnInit {
 
 export interface DayGrossSalaryViewModel {
   dayGrossSalary: string;
+  invalid: boolean;
 }

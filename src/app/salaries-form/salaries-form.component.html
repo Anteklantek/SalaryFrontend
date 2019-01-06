@@ -2,7 +2,7 @@
   <h1>Salaries calculator</h1>
   <form #f="ngForm" (submit)="onSubmit()">
     <div class="form-group">
-      <label for="dayGrossSalary">Day gross salary</label>
+      <label for="dayGrossSalary">Day gross salary:</label>
       <input type="text"
              class="form-control"
              id="dayGrossSalary"
@@ -10,12 +10,12 @@
              [(ngModel)]="model.dayGrossSalary"
              required>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">Calculate</button>
   </form>
   <ul class="mt-3">
     <li *ngFor="let salaryItem of salaryList.salaryItemsList">
       <p>{{ salaryItem.country }}</p>
-      <p>Salary: {{ salaryItem.salary }} </p>
+      <p>Salary: {{ salaryItem.salary }} PLN </p>
       <div class="alert alert-primary" role="alert"
            *ngIf="!(salaryItem.rateEffectiveDate == currentDate.toISOString().slice(0,10))">
         Watch out: exchange rate

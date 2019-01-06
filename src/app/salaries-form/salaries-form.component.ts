@@ -7,12 +7,12 @@ import {SalaryList, SalaryService} from "./salary.service";
   styleUrls: ['./salaries-form.component.css']
 })
 export class SalariesFormComponent implements OnInit {
-  model : DayGrossSalaryViewModel = {
+  model: DayGrossSalaryViewModel = {
     dayGrossSalary: '',
     invalid: true
   };
-  salaryList : SalaryList;
-  currentDate : Date;
+  salaryList: SalaryList;
+  currentDate: Date;
 
   constructor(private salaryService: SalaryService) {
 
@@ -20,11 +20,15 @@ export class SalariesFormComponent implements OnInit {
 
   onSubmit() {
     this.salaryService.getSalaryList(this.model.dayGrossSalary)
-      .subscribe((value : SalaryList) => this.salaryList = value);
+      .subscribe((value: SalaryList) => this.salaryList = value);
   }
 
   ngOnInit(): void {
     this.currentDate = new Date();
+  }
+
+  isStringDateToday(stringDate: string): boolean {
+    return stringDate == this.currentDate.toISOString().slice(0, 10);
   }
 
 

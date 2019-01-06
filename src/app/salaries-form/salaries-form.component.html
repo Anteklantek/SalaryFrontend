@@ -24,7 +24,7 @@
       <p>{{ salaryItem.country }}</p>
       <p>Salary: {{ salaryItem.salary }} PLN </p>
       <div class="alert alert-primary" role="alert"
-           *ngIf="!(salaryItem.rateEffectiveDate == currentDate.toISOString().slice(0,10))">
+           *ngIf="!isStringDateToday(salaryItem.rateEffectiveDate)">
         Watch out: exchange rate
         from {{ salaryItem.rateEffectiveDate }}
       </div>
